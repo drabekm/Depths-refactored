@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Block" type="StaticBody2D" groups=[
+"Block",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="BuldingDetector" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, -50 )
+collision_mask = 16
