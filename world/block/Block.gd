@@ -3,8 +3,10 @@ extends StaticBody2D
 const SPRITE_SIZE = 32
 
 var type : int
+var ore_type : int
 var corner_state : int
 
+var indestructable : bool
 
 var neighbour_detectors = []
 var diagonal_neigbour_detectors = []
@@ -17,6 +19,7 @@ func _ready():
 	set_physics_process(false)
 	set_process_input(false)
 	_loadNeighbourDetectors()
+	#TODO: add indestructible check
 	
 
 func _loadNeighbourDetectors() -> void:
@@ -30,8 +33,10 @@ func _loadNeighbourDetectors() -> void:
 	
 	
 
-func init(type: int, corner_state : int = 0):
+func init(type: int, ore_type:int, corner_state : int = 0):
 	self.type = type
+	self.ore_type = ore_type
+	#TODO: add ore sprite loading
 	self.corner_state = corner_state
 
 
@@ -81,7 +86,6 @@ func UpdateCornerStatus(neigbour_global_position):
 		elif is_neigbour_left and not is_neigbour_top:
 			corner_state = corner_state | 128
 	
-	print(corner_state)
 	var new_texture = load("res://world/block/textures/debug/" + str(corner_state) + ".png")
 	
 	if new_texture != null:
