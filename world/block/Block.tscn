@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://world/block/Block.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14, 14 )
 
 [node name="Block" type="StaticBody2D" groups=[
 "Block",
@@ -59,25 +62,34 @@ collision_mask = 32
 ]]
 enabled = true
 cast_to = Vector2( -20, -20 )
-collision_mask = 32
+collision_mask = 64
 
 [node name="TopRight" type="RayCast2D" parent="NeighbourDetectors" groups=[
 "DiagonalDetector",
 ]]
 enabled = true
 cast_to = Vector2( 20, -20 )
-collision_mask = 32
+collision_mask = 64
 
 [node name="BottomLeft" type="RayCast2D" parent="NeighbourDetectors" groups=[
 "DiagonalDetector",
 ]]
 enabled = true
 cast_to = Vector2( -20, 20 )
-collision_mask = 32
+collision_mask = 64
 
 [node name="BottomRight" type="RayCast2D" parent="NeighbourDetectors" groups=[
 "DiagonalDetector",
 ]]
 enabled = true
 cast_to = Vector2( 20, 20 )
-collision_mask = 32
+collision_mask = 64
+
+[node name="ColliderForDiagonalNeigbours" type="StaticBody2D" parent="." groups=[
+"BlockHelperCollider",
+]]
+collision_layer = 2147483712
+collision_mask = 2147483712
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColliderForDiagonalNeigbours"]
+shape = SubResource( 2 )
