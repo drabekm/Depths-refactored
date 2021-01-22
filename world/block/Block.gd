@@ -5,8 +5,11 @@ const SPRITE_SIZE = 32
 var type : int
 var ore_type : int
 var corner_state : int
+var detectors_on : bool = false
 
 var indestructable : bool
+
+var position_index : Vector2
 
 var neighbour_detectors = []
 var diagonal_neigbour_detectors = []
@@ -30,17 +33,25 @@ func _loadNeighbourDetectors() -> void:
 			var diagonal_collider = get_node("ColliderForDiagonalNeigbours")
 			detector.add_exception(diagonal_collider)
 			diagonal_neigbour_detectors.append(detector)
-	
-	
 
-func init(type: int, ore_type:int, corner_state : int = 0):
+func _enable_neigbour_detectors() -> void:
+	for detector in neighbour_detectors:
+		detector.enabled = true
+		detector.force_raycast_update()
+
+func init(type: int, ore_type:int, position_index: Vector2, corner_state : int = 0):
 	self.type = type
 	self.ore_type = ore_type
+	self.position_index = position_index	
 	#TODO: add ore sprite loading
 	self.corner_state = corner_state
 
 
 func Destroy() -> void:
+	emit_signal("destroyed")
+	if not detectors_on:
+		_enable_neigbour_detectors()
+	
 	for detector in neighbour_detectors:
 		if detector.is_colliding():
 			var colider = detector.get_collider()
@@ -55,6 +66,8 @@ func Destroy() -> void:
 #Podle rozdílu souřadnic se určuje ze které strany zmizel sousední blok
 #a podle toho se určuje nová odpovídající textura
 func UpdateCornerStatus(neigbour_global_position):
+	
+	
 	var is_x_coord_differing = self.global_position.x != neigbour_global_position.x
 	var is_neigbour_left = (self.global_position.x - neigbour_global_position.x) > 0
 	
@@ -85,8 +98,9 @@ func UpdateCornerStatus(neigbour_global_position):
 			corner_state = corner_state | 64
 		elif is_neigbour_left and not is_neigbour_top:
 			corner_state = corner_state | 128
-	
+	if(self.name == "Block2"):
+		print("res://world/block/textures/debug/" + str(corner_state) + ".png")
 	var new_texture = load("res://world/block/textures/debug/" + str(corner_state) + ".png")
 	
 	if new_texture != null:
-		get_node("Sprite").texture = new_texture
+		get_node("BlockSprite").texture = new_texture

@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/basicFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://world/block/Block.tscn" type="PackedScene" id=3]
 [ext_resource path="res://test.gd" type="Script" id=4]
+[ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://world/chunkHandler/ChunkHandler.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 33.106, 31.1508 )
 
 [node name="icon" type="Sprite"]
-position = Vector2( 181.624, 167.962 )
-texture = ExtResource( 1 )
+position = Vector2( 170.933, 168.853 )
 script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="."]
@@ -21,35 +25,100 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Block" parent="." instance=ExtResource( 3 )]
-position = Vector2( 154.376, -79.962 )
+[node name="BlockSpriteUpdate" type="Node2D" parent="."]
 
-[node name="Block2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 154.376, -111.962 )
+[node name="Block" parent="BlockSpriteUpdate" instance=ExtResource( 3 )]
+position = Vector2( 505.339, -284.287 )
 
-[node name="Block4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 122.376, -111.962 )
+[node name="Block2" parent="BlockSpriteUpdate" instance=ExtResource( 3 )]
+position = Vector2( 505.339, -316.286 )
 
-[node name="Block5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 122.376, -47.962 )
+[node name="Block4" parent="BlockSpriteUpdate" instance=ExtResource( 3 )]
+position = Vector2( 473.339, -316.286 )
 
-[node name="Block6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 154.376, -47.962 )
+[node name="Block5" parent="BlockSpriteUpdate" instance=ExtResource( 3 )]
+position = Vector2( 473.339, -252.287 )
 
-[node name="Block7" parent="." instance=ExtResource( 3 )]
-position = Vector2( 186.376, -79.962 )
+[node name="Block6" parent="BlockSpriteUpdate" instance=ExtResource( 3 )]
+position = Vector2( 505.339, -252.287 )
 
-[node name="Block8" parent="." instance=ExtResource( 3 )]
-position = Vector2( 186.376, -111.962 )
+[node name="Block7" parent="BlockSpriteUpdate" instance=ExtResource( 3 )]
+position = Vector2( 537.339, -284.287 )
 
-[node name="Block9" parent="." instance=ExtResource( 3 )]
-position = Vector2( 186.376, -47.962 )
+[node name="Block8" parent="BlockSpriteUpdate" instance=ExtResource( 3 )]
+position = Vector2( 537.339, -316.286 )
 
-[node name="Block3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 122.376, -79.962 )
+[node name="Block9" parent="BlockSpriteUpdate" instance=ExtResource( 3 )]
+position = Vector2( 537.339, -252.287 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Block3" parent="BlockSpriteUpdate" instance=ExtResource( 3 )]
+position = Vector2( 473.339, -284.287 )
+
+[node name="Timer" type="Timer" parent="BlockSpriteUpdate"]
 wait_time = 3.0
 one_shot = true
 autostart = true
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[node name="PlayerMovement" type="Node2D" parent="."]
+visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PlayerMovement"]
+
+[node name="Sprite" type="Sprite" parent="PlayerMovement/StaticBody2D"]
+position = Vector2( 149.226, 163.034 )
+scale = Vector2( 10.7581, 1 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerMovement/StaticBody2D"]
+position = Vector2( 149.226, 163.034 )
+scale = Vector2( 10.7581, 1 )
+shape = SubResource( 1 )
+
+[node name="Player" parent="PlayerMovement" instance=ExtResource( 5 )]
+position = Vector2( 92, 59.5 )
+
+[node name="ChunkHandler" parent="." instance=ExtResource( 6 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_left = -173.0
+margin_top = -171.0
+margin_right = 480.0
+margin_bottom = 190.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_left = -0.568
+anchor_top = -0.928
+anchor_right = -0.568
+anchor_bottom = -0.928
+margin_left = -94.92
+margin_top = -101.814
+margin_right = 14.08
+margin_bottom = -81.8136
+text = "SPAWN CHUNK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="."]
+anchor_left = -0.568
+anchor_top = -0.928
+anchor_right = -0.568
+anchor_bottom = -0.928
+margin_left = 21.6688
+margin_top = -101.456
+margin_right = 130.669
+margin_bottom = -81.4562
+text = "DESPAWN CHUNK"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="BlockSpriteUpdate/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
