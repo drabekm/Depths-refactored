@@ -78,8 +78,11 @@ shape = SubResource( 1 )
 position = Vector2( 92, 59.5 )
 
 [node name="ChunkHandler" parent="." instance=ExtResource( 6 )]
+position = Vector2( -101.562, -46.3267 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2( -104.235, -38.3087 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

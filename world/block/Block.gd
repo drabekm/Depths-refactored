@@ -14,7 +14,8 @@ var position_index : Vector2
 var neighbour_detectors = []
 var diagonal_neigbour_detectors = []
 
-signal destroyed
+signal on_destroyed
+signal on_corner_state_updated
 
 func _ready():
 	corner_state = 0 #TODO: Remove this when the init function is used
@@ -39,16 +40,32 @@ func _enable_neigbour_detectors() -> void:
 		detector.enabled = true
 		detector.force_raycast_update()
 
+func _disable_neigbour_detectors() -> void:
+	for detector in neighbour_detectors:
+		detector.enabled = false
+
+func _set_sprite_by_corner_state() -> bool:
+	var new_texture = load("res://world/block/textures/debug/" + str(corner_state) + ".png")
+	
+	if new_texture != null:
+		get_node("BlockSprite").texture = new_texture
+		return true
+	
+	return false
+
+
 func init(type: int, ore_type:int, position_index: Vector2, corner_state : int = 0):
 	self.type = type
 	self.ore_type = ore_type
 	self.position_index = position_index	
 	#TODO: add ore sprite loading
 	self.corner_state = corner_state
+	if corner_state != 0:
+		_set_sprite_by_corner_state()
 
 
 func Destroy() -> void:
-	emit_signal("destroyed")
+	emit_signal("on_destroyed", self.position_index)
 	if not detectors_on:
 		_enable_neigbour_detectors()
 	
@@ -66,8 +83,6 @@ func Destroy() -> void:
 #Podle rozdílu souřadnic se určuje ze které strany zmizel sousední blok
 #a podle toho se určuje nová odpovídající textura
 func UpdateCornerStatus(neigbour_global_position):
-	
-	
 	var is_x_coord_differing = self.global_position.x != neigbour_global_position.x
 	var is_neigbour_left = (self.global_position.x - neigbour_global_position.x) > 0
 	
@@ -98,9 +113,11 @@ func UpdateCornerStatus(neigbour_global_position):
 			corner_state = corner_state | 64
 		elif is_neigbour_left and not is_neigbour_top:
 			corner_state = corner_state | 128
-	if(self.name == "Block2"):
-		print("res://world/block/textures/debug/" + str(corner_state) + ".png")
-	var new_texture = load("res://world/block/textures/debug/" + str(corner_state) + ".png")
-	
-	if new_texture != null:
-		get_node("BlockSprite").texture = new_texture
+	print(corner_state)
+	emit_signal("on_corner_state_updated", self.position_index, corner_state)
+	_set_sprite_by_corner_state()
+
+
+func _on_Block_mouse_entered():
+	print("mouse event")
+	Destroy()

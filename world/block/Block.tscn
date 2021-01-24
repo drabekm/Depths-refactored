@@ -12,6 +12,7 @@ extents = Vector2( 14, 14 )
 [node name="Block" type="StaticBody2D" groups=[
 "Block",
 ]]
+input_pickable = true
 collision_layer = 33
 collision_mask = 33
 script = ExtResource( 1 )
@@ -47,7 +48,7 @@ collision_mask = 32
 "NonDiagonalDetector",
 ]]
 cast_to = Vector2( 0, -20 )
-collision_mask = 33
+collision_mask = 32
 
 [node name="Bottom" type="RayCast2D" parent="NeighbourDetectors" groups=[
 "NonDiagonalDetector",
@@ -67,16 +68,16 @@ collision_mask = 64
 cast_to = Vector2( 20, -20 )
 collision_mask = 64
 
-[node name="BottomLeft" type="RayCast2D" parent="NeighbourDetectors" groups=[
-"DiagonalDetector",
-]]
-cast_to = Vector2( -20, 20 )
-collision_mask = 64
-
 [node name="BottomRight" type="RayCast2D" parent="NeighbourDetectors" groups=[
 "DiagonalDetector",
 ]]
 cast_to = Vector2( 20, 20 )
+collision_mask = 64
+
+[node name="BottomLeft" type="RayCast2D" parent="NeighbourDetectors" groups=[
+"DiagonalDetector",
+]]
+cast_to = Vector2( -20, 20 )
 collision_mask = 64
 
 [node name="ColliderForDiagonalNeigbours" type="StaticBody2D" parent="." groups=[
@@ -87,3 +88,4 @@ collision_mask = 2147483712
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColliderForDiagonalNeigbours"]
 shape = SubResource( 2 )
+[connection signal="mouse_entered" from="." to="." method="_on_Block_mouse_entered"]
