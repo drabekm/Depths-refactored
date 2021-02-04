@@ -16,12 +16,17 @@ _global_script_class_icons={
 [application]
 
 config/name="Depths-refactored"
-run/main_scene="res://test.tscn"
+run/main_scene="res://TestScenes/chunk_test2/ChunkHandlerTest.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 PlayerInfo="*res://Entities/Player/PlayerInfo.gd"
+ChunkDefinition="*res://world/chunk/ChunkDefinition.gd"
+
+[debug]
+
+settings/allow_debug_scripts=true
 
 [display]
 
@@ -67,6 +72,10 @@ test="cs"
 fallback="cs"
 translations=PoolStringArray( "res://translations/translations.en.translation", "res://translations/translations.cs.translation" )
 locale_filter=[ 1, [ "cs", "en" ] ]
+
+[physics]
+
+2d/physics_engine="GodotPhysics"
 
 [rendering]
 

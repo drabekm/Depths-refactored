@@ -13,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_process_input()
-	
+	_update_global_player_info()
 
 
 
@@ -27,6 +27,9 @@ func _process_input():
 	
 	PlayerInfo.is_rocket_on = Input.is_action_pressed("ui_up")
 	
+
+func _update_global_player_info() -> void:
+	PlayerInfo.position = self.position
 
 func _process_horizontal_movement() -> void:
 	if direction.x > 0: # right movement

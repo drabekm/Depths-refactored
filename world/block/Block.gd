@@ -23,6 +23,10 @@ func _ready():
 	set_physics_process(false)
 	set_process_input(false)
 	_loadNeighbourDetectors()
+	
+	if ProjectSettings.get_setting("debug/settings/allow_debug_scripts"):
+		self.input_pickable = true
+	
 	#TODO: add indestructible check
 	
 
@@ -60,8 +64,8 @@ func init(type: int, ore_type:int, position_index: Vector2, corner_state : int =
 	self.position_index = position_index	
 	#TODO: add ore sprite loading
 	self.corner_state = corner_state
-	if corner_state != 0:
-		_set_sprite_by_corner_state()
+	
+	_set_sprite_by_corner_state()
 
 
 func Destroy() -> void:
