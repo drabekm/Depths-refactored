@@ -52,3 +52,4 @@ func _physics_process(delta):
 	_process_horizontal_movement()
 	_process_vertical_movement()
 	speed = move_and_slide(speed, FLOOR_NORMAL)
+	DebugInfo.speed = speed

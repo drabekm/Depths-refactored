@@ -23,7 +23,7 @@ func _ready():
 	set_physics_process(false)
 	set_process_input(false)
 	_loadNeighbourDetectors()
-	
+#
 	if ProjectSettings.get_setting("debug/settings/allow_debug_scripts"):
 		self.input_pickable = true
 	
@@ -117,7 +117,6 @@ func UpdateCornerStatus(neigbour_global_position):
 			corner_state = corner_state | 64
 		elif is_neigbour_left and not is_neigbour_top:
 			corner_state = corner_state | 128
-	print(corner_state)
 	emit_signal("on_corner_state_updated", self.position_index, corner_state)
 	_set_sprite_by_corner_state()
 

@@ -21,3 +21,5 @@ var max_health : int = 100
 
 var fuel : float = 100
 var max_fuel : int = 100
+
+var money: int = 0

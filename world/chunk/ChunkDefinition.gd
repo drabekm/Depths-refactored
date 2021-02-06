@@ -1,7 +1,7 @@
 extends Node
 
-const CHUNK_WIDTH = 10
-const CHUNK_HEIGHT = 10
+const CHUNK_WIDTH = 5
+const CHUNK_HEIGHT = 5
 const BLOCK_SIZE = 32
 
 

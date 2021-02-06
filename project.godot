@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 PlayerInfo="*res://Entities/Player/PlayerInfo.gd"
 ChunkDefinition="*res://world/chunk/ChunkDefinition.gd"
+DebugInfo="*res://Debug/DebugInfo.gd"
 
 [debug]
 
@@ -32,7 +33,6 @@ settings/allow_debug_scripts=true
 
 window/size/width=640
 window/size/height=360
-window/vsync/use_vsync=false
 window/stretch/mode="2d"
 
 [input]
@@ -79,4 +79,5 @@ locale_filter=[ 1, [ "cs", "en" ] ]
 
 [rendering]
 
+quality/2d/use_nvidia_rect_flicker_workaround=true
 environment/default_environment="res://default_env.tres"

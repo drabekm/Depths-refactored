@@ -68,8 +68,8 @@ func spawn_blocks(chunkPosition : Vector2):
 				
 				var block_instance = _create_block(block_position, Vector2(i,j))
 				
-				self.add_child(block_instance)
-#				self.call_deferred("add_child", block_instance)
+#				self.add_child(block_instance)
+				self.call_deferred("add_child", block_instance)
 				
 
 func _get_block_name(blockPosition: Vector2) -> String:

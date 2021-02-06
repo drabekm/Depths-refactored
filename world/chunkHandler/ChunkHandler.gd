@@ -7,10 +7,12 @@ var chunk_deleted_blocks = {}
 var chunk_corner_states = {}
 
 var center_chunk = Vector2(0,0)
-const CHUNK_GROUP_SIZE = 2
+const CHUNK_GROUP_SIZE = 3
 var current_chunks = []
+var thread
 
 func _ready():
+	thread = Thread.new()
 	set_physics_process(true)
 	_spawn_chunks()
 
@@ -31,11 +33,12 @@ func update_chunks():
 		changed = true
 	
 	if changed:
-		print("CHANGED")
 		_despawn_chunks()
+		#thread.start(self,'_spawn_chunks')
 		_spawn_chunks()
-	
-	print(self.get_child_count())
+		
+		DebugInfo.spawned_chunks_count = self.get_child_count()
+		DebugInfo.central_chunk = self.center_chunk
 
 func _spawn_chunks():
 	for x in range(center_chunk.x - CHUNK_GROUP_SIZE, center_chunk.x + CHUNK_GROUP_SIZE):
@@ -45,7 +48,7 @@ func _spawn_chunks():
 				
 				
 				spawn_chunk(Vector2(x,y))
-				
+	return 0
 
 func _despawn_chunks():
 	for chunk in current_chunks:
