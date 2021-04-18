@@ -32,6 +32,14 @@ func update_chunks():
 		center_chunk.x = center_chunk.x - 1
 		changed = true
 	
+	if PlayerInfo.position.y > center_chunk.y * chunk_vertical_lenght + chunk_vertical_lenght / 2:
+		center_chunk.y = center_chunk.y + 1
+		changed = true
+	elif PlayerInfo.position.y < center_chunk.y * chunk_vertical_lenght - chunk_vertical_lenght / 2:
+		center_chunk.y = center_chunk.y - 1
+		changed = true
+	
+	
 	if changed:
 		_despawn_chunks()
 		#thread.start(self,'_spawn_chunks')
@@ -44,11 +52,7 @@ func _spawn_chunks():
 	for x in range(center_chunk.x - CHUNK_GROUP_SIZE, center_chunk.x + CHUNK_GROUP_SIZE):
 		for y in range(center_chunk.y - CHUNK_GROUP_SIZE, center_chunk.y + CHUNK_GROUP_SIZE):
 			if  y >= 0 and not current_chunks.has(Vector2(x,y)):
-				
-				
-				
 				spawn_chunk(Vector2(x,y))
-	return 0
 
 func _despawn_chunks():
 	for chunk in current_chunks:
@@ -68,16 +72,10 @@ func spawn_chunk(chunk_position: Vector2):
 	if chunk_corner_states.has(chunk_position):
 		corner_states = chunk_corner_states[chunk_position]
 	
-	
-	
 	chunk_instance.init(chunk_position, deleted_blocks, corner_states)
-	
 	current_chunks.append(chunk_position)
 	
-	
 	self.call_deferred("add_child", chunk_instance)
-#	self.add_child(chunk_instance)
-	
 
 func despawn_chunk(chunk_position: Vector2):
 	

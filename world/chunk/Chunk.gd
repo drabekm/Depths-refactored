@@ -13,7 +13,7 @@ func _ready():
 func init(chunk_position : Vector2, deleted_blocks : Dictionary, corner_states : Dictionary):
 	self.deleted_blocks = deleted_blocks
 	self.blocks_corner_state = corner_states
-	
+	self.chunk_index = chunk_position
 	
 	spawn_blocks(chunk_position)
 	
@@ -33,12 +33,18 @@ func _create_block(position: Vector2, block_index: Vector2) -> StaticBody2D:
 		corner_state = blocks_corner_state[block_index]
 	
 	
+	if _is_block_on_surface(block_index, corner_state):
+		corner_state = 52
+	
 	block_instance.init(0, 0, block_index, corner_state)
 	
 	block_instance.connect("on_destroyed", self, "_on_block_destroyed_handler")
 	block_instance.connect("on_corner_state_updated", self, "_on_corner_state_updated_handler")
 	
 	return block_instance
+
+func _is_block_on_surface(block_index: Vector2, corner_state: int) -> bool:
+	return chunk_index.y == 0 and block_index.y == 0 and corner_state == 0
 
 func get_deleted_blocks() -> Dictionary:
 	return deleted_blocks

@@ -12,6 +12,7 @@ extents = Vector2( 14, 14 )
 [node name="Block" type="StaticBody2D" groups=[
 "Block",
 ]]
+input_pickable = true
 collision_layer = 33
 collision_mask = 33
 script = ExtResource( 1 )

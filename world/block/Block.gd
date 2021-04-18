@@ -21,7 +21,7 @@ func _ready():
 	corner_state = 0 #TODO: Remove this when the init function is used
 	set_process(false)
 	set_physics_process(false)
-	set_process_input(false)
+	set_process_input(true)
 	_loadNeighbourDetectors()
 #
 	if ProjectSettings.get_setting("debug/settings/allow_debug_scripts"):
@@ -68,7 +68,7 @@ func init(type: int, ore_type:int, position_index: Vector2, corner_state : int =
 	_set_sprite_by_corner_state()
 
 
-func Destroy() -> void:
+func destroy() -> void:
 	emit_signal("on_destroyed", self.position_index)
 	if not detectors_on:
 		_enable_neigbour_detectors()
@@ -123,4 +123,4 @@ func UpdateCornerStatus(neigbour_global_position):
 
 func _on_Block_mouse_entered():
 	print("mouse event")
-	Destroy()
+	destroy()
