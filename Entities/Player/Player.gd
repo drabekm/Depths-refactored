@@ -65,17 +65,17 @@ func _process_block_detectors():
 	if block_detector_bottom.is_colliding() and Input.is_action_pressed("ui_down"):
 		var colider = block_detector_bottom.get_collider()
 		if colider != null:
-			colider.destroy()
+			colider.destroy(true)
 	
 	if block_detector_right.is_colliding() and Input.is_action_pressed("ui_right") and self.is_on_floor():
 		var colider = block_detector_right.get_collider()
 		if colider != null:
-			colider.destroy()
+			colider.destroy(true)
 	
 	if block_detector_left.is_colliding() and Input.is_action_pressed("ui_left") and self.is_on_floor():
 		var colider = block_detector_left.get_collider()
 		if colider != null:
-			colider.destroy()
+			colider.destroy(true)
 
 func _physics_process(delta):
 	_process_horizontal_movement()

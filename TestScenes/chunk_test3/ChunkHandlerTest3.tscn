@@ -6,6 +6,7 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="ChunkHandlerNew" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -256 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -64 )
+position = Vector2( 0, -24 )

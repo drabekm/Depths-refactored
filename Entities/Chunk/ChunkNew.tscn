@@ -1,6 +1,71 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Entities/Chunk/ChunkNew.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Block/BlockNew.tscn" type="PackedScene" id=2]
 
 [node name="ChunkNew" type="Node2D"]
+position = Vector2( 64, 16 )
 script = ExtResource( 1 )
+
+[node name="Block" parent="." instance=ExtResource( 2 )]
+position = Vector2( -16, 0 )
+position_in_parent_chunk = Vector2( 1, 0 )
+
+[node name="Block2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 16, 0 )
+position_in_parent_chunk = Vector2( 2, 0 )
+
+[node name="Block3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 48, 0 )
+position_in_parent_chunk = Vector2( 3, 0 )
+
+[node name="Block4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -48, 0 )
+
+[node name="Block5" parent="." instance=ExtResource( 2 )]
+position = Vector2( -16, 32 )
+position_in_parent_chunk = Vector2( 1, 1 )
+
+[node name="Block6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 16, 32 )
+position_in_parent_chunk = Vector2( 2, 1 )
+
+[node name="Block7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 48, 32 )
+position_in_parent_chunk = Vector2( 3, 1 )
+
+[node name="Block8" parent="." instance=ExtResource( 2 )]
+position = Vector2( -48, 32 )
+position_in_parent_chunk = Vector2( 0, 1 )
+
+[node name="Block9" parent="." instance=ExtResource( 2 )]
+position = Vector2( -16, 64 )
+position_in_parent_chunk = Vector2( 1, 2 )
+
+[node name="Block10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 16, 64 )
+position_in_parent_chunk = Vector2( 2, 2 )
+
+[node name="Block11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 48, 64 )
+position_in_parent_chunk = Vector2( 3, 2 )
+
+[node name="Block12" parent="." instance=ExtResource( 2 )]
+position = Vector2( -48, 64 )
+position_in_parent_chunk = Vector2( 0, 2 )
+
+[node name="Block13" parent="." instance=ExtResource( 2 )]
+position = Vector2( -16, 96 )
+position_in_parent_chunk = Vector2( 1, 3 )
+
+[node name="Block14" parent="." instance=ExtResource( 2 )]
+position = Vector2( 16, 96 )
+position_in_parent_chunk = Vector2( 2, 3 )
+
+[node name="Block15" parent="." instance=ExtResource( 2 )]
+position = Vector2( 48, 96 )
+position_in_parent_chunk = Vector2( 3, 3 )
+
+[node name="Block16" parent="." instance=ExtResource( 2 )]
+position = Vector2( -48, 96 )
+position_in_parent_chunk = Vector2( 0, 3 )

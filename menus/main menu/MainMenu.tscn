@@ -114,5 +114,6 @@ focus_previous = NodePath("../Settings")
 text = "Quit"
 
 [node name="Fader" parent="." instance=ExtResource( 4 )]
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonMargins/Buttons/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="fade_out_finished" from="Fader" to="." method="_on_Fader_fade_out_finished"]
