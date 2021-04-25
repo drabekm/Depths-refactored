@@ -53,25 +53,28 @@ func has_player_moved_from_center() -> bool:
 	
 	
 	
-	if player_position.x - PLAYER_PIXEL_SIZE / 2 > central_chunk_position_right :
+	if player_position.x - PLAYER_PIXEL_SIZE / 2 + 1 > central_chunk_position_right and _player_is_not_drilling() :
 		previous_central_chunk = central_chunk
 		central_chunk.x += 1
 		has_moved_away = true
-	elif player_position.x + PLAYER_PIXEL_SIZE / 2 < central_chunk_position_left :
+	elif player_position.x + PLAYER_PIXEL_SIZE / 2 - 1 < central_chunk_position_left and _player_is_not_drilling():
 		previous_central_chunk = central_chunk
 		central_chunk.x -= 1
 		has_moved_away = true
 
-	if player_position.y - PLAYER_PIXEL_SIZE / 2 > central_chunk_position_bottom:
+	if player_position.y - PLAYER_PIXEL_SIZE / 2 + 1 > central_chunk_position_bottom and _player_is_not_drilling():
 		previous_central_chunk = central_chunk
 		central_chunk.y += 1
 		has_moved_away = true
-	elif player_position.y + PLAYER_PIXEL_SIZE / 2 < central_chunk_position_top:
+	elif player_position.y + PLAYER_PIXEL_SIZE / 2 - 1< central_chunk_position_top and _player_is_not_drilling():
 		previous_central_chunk = central_chunk
 		central_chunk.y -= 1
 		has_moved_away = true
 
 	return has_moved_away
+
+func _player_is_not_drilling() -> bool:
+	return !PlayerInfo.is_drilling
 
 func get_chunks_destroyed_blocks(position : Vector2) -> Array:
 	if destroyed_blocks_by_chunk_position.has(position):
