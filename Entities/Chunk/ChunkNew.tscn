@@ -69,3 +69,12 @@ position_in_parent_chunk = Vector2( 3, 3 )
 [node name="Block16" parent="." instance=ExtResource( 2 )]
 position = Vector2( -48, 96 )
 position_in_parent_chunk = Vector2( 0, 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -40.0
+margin_top = 32.0
+margin_bottom = 46.0
+rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

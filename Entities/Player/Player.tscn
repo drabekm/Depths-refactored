@@ -33,7 +33,7 @@ current = true
 
 [node name="BlockDetectorTop" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 0, -17 )
+cast_to = Vector2( 0, -16 )
 
 [node name="BlockDetectorBottom" type="RayCast2D" parent="."]
 enabled = true
@@ -41,11 +41,11 @@ cast_to = Vector2( 0, 17 )
 
 [node name="BlockDetectorRight" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 17, 0 )
+cast_to = Vector2( 13, 0 )
 
 [node name="BlockDetectorLeft" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( -17, 0 )
+cast_to = Vector2( -13, 0 )
 
 [node name="DrillingTween" type="Tween" parent="."]
 

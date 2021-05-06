@@ -5,6 +5,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=3]
 
 [node name="ChunkHandlerNew" type="Node2D"]
+position = Vector2( 0, -120 )
 script = ExtResource( 1 )
 
 [node name="Chunks" type="Node2D" parent="."]
@@ -29,10 +30,6 @@ chunk_position = Vector2( 2, -2 )
 position = Vector2( 384, 16 )
 chunk_position = Vector2( 3, -2 )
 
-[node name="ChunkNew23" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 512, 16 )
-chunk_position = Vector2( 4, -2 )
-
 [node name="ChunkNew6" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( -256, 16 )
 chunk_position = Vector2( -2, -2 )
@@ -40,10 +37,6 @@ chunk_position = Vector2( -2, -2 )
 [node name="ChunkNew11" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( -384, 16 )
 chunk_position = Vector2( -3, -2 )
-
-[node name="ChunkNew17" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( -512, 16 )
-chunk_position = Vector2( -4, -2 )
 
 [node name="ChunkNew46" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( 128, -112 )
@@ -65,10 +58,6 @@ chunk_position = Vector2( 2, -3 )
 position = Vector2( 384, -112 )
 chunk_position = Vector2( 3, -3 )
 
-[node name="ChunkNew51" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 512, -112 )
-chunk_position = Vector2( 4, -3 )
-
 [node name="ChunkNew52" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( -256, -112 )
 chunk_position = Vector2( -2, -3 )
@@ -76,10 +65,6 @@ chunk_position = Vector2( -2, -3 )
 [node name="ChunkNew53" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( -384, -112 )
 chunk_position = Vector2( -3, -3 )
-
-[node name="ChunkNew54" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( -512, -112 )
-chunk_position = Vector2( -4, -3 )
 
 [node name="ChunkNew7" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( 128, 144 )
@@ -109,18 +94,6 @@ chunk_position = Vector2( 3, 0 )
 position = Vector2( 384, 400 )
 chunk_position = Vector2( 3, 1 )
 
-[node name="ChunkNew28" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 512, 144 )
-chunk_position = Vector2( 4, -1 )
-
-[node name="ChunkNew29" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 512, 272 )
-chunk_position = Vector2( 4, 0 )
-
-[node name="ChunkNew32" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 512, 400 )
-chunk_position = Vector2( 4, 1 )
-
 [node name="ChunkNew12" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( -256, 144 )
 chunk_position = Vector2( -2, -1 )
@@ -136,18 +109,6 @@ chunk_position = Vector2( -3, 0 )
 [node name="ChunkNew34" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( -384, 400 )
 chunk_position = Vector2( -3, 1 )
-
-[node name="ChunkNew26" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( -512, 144 )
-chunk_position = Vector2( -4, -1 )
-
-[node name="ChunkNew35" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( -512, 272 )
-chunk_position = Vector2( -4, 0 )
-
-[node name="ChunkNew36" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( -512, 400 )
-chunk_position = Vector2( -4, 1 )
 
 [node name="ChunkNew13" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( 128, 272 )
@@ -187,42 +148,6 @@ chunk_position = Vector2( 2, 1 )
 [node name="ChunkNew24" parent="Chunks" instance=ExtResource( 2 )]
 position = Vector2( -256, 400 )
 chunk_position = Vector2( -2, 1 )
-
-[node name="ChunkNew37" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 384, 528 )
-chunk_position = Vector2( 3, 2 )
-
-[node name="ChunkNew38" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 512, 528 )
-chunk_position = Vector2( 4, 2 )
-
-[node name="ChunkNew39" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( -384, 528 )
-chunk_position = Vector2( -3, 2 )
-
-[node name="ChunkNew40" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( -512, 528 )
-chunk_position = Vector2( -4, 2 )
-
-[node name="ChunkNew41" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 128, 528 )
-chunk_position = Vector2( 1, 2 )
-
-[node name="ChunkNew42" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 0, 528 )
-chunk_position = Vector2( 0, 2 )
-
-[node name="ChunkNew43" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( -128, 528 )
-chunk_position = Vector2( -1, 2 )
-
-[node name="ChunkNew44" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( 256, 528 )
-chunk_position = Vector2( 2, 2 )
-
-[node name="ChunkNew45" parent="Chunks" instance=ExtResource( 2 )]
-position = Vector2( -256, 528 )
-chunk_position = Vector2( -2, 2 )
 
 [node name="ChunkBorder" type="Sprite" parent="."]
 

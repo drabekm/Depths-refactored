@@ -71,7 +71,7 @@ func is_driling_active() -> bool:
 func drill_block(var colider):
 	PlayerInfo.is_drilling = true
 	get_node("CollisionShape2D").disabled = true
-	tween.interpolate_property(self, "global_position", self.global_position, colider.global_position , 0.9, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "global_position", self.global_position, colider.global_position , 0.4, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.set_meta("tweened_block", colider)
 	tween.start()
 

@@ -4,9 +4,10 @@
 [ext_resource path="res://Entities/Player/Player.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 8, 16 )
 
 [node name="ChunkHandlerNew" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -256 )
+position = Vector2( 0, -272 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 0, -24 )
+position = Vector2( 0, -40 )
